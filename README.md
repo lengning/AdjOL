@@ -12,6 +12,6 @@ The inputs for the code are:
 
 -  [FileNameIn] can take .csv, .txt or .tab. Rows are genes and columns are samples.
 
--  [lower/upper quantile] thresholds for outlier adjustment. For each gene/isoform, values <= qt1 th quantile (>= qt2 th quantile) will be pushed to qt1 th quantile (qt2 th quantile) prior to the scaling.
+-  [lower/upper quantile] thresholds for outlier adjustment. For each gene/isoform, values <= qt1 th quantile (>= qt2 th quantile) will be pushed to qt1 th quantile (qt2 th quantile) 
 
 -  [OutputName] will output a tab delimited file
