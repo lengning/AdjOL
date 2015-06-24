@@ -13,16 +13,16 @@ Out=options[4] # output
 
 PushOL<- function (Data, qt1 = 0.05, qt2 = 0.95, PushHigh = T, PushLow = T) 
 {
-	  Q5 = apply(Data, 1, function(i) quantile(i, qt1))
-    Q95 = apply(Data, 1, function(i) quantile(i, qt2))
-		DataSc2 = Data
-		    for (i in 1:nrow(Data)) {
-					        if (PushLow) 
-									            DataSc2[i, which(DataSc2[i, ] < Q5[i])] = Q5[i]
-				        if (PushHigh) 
-									            DataSc2[i, which(DataSc2[i, ] > Q95[i])] = Q95[i]
-								    }
-				    DataSc2
+	Q5 = apply(Data, 1, function(i) quantile(i, qt1))
+    	Q95 = apply(Data, 1, function(i) quantile(i, qt2))
+	DataSc2 = Data
+for (i in 1:nrow(Data)) {
+    if (PushLow) 
+    DataSc2[i, which(DataSc2[i, ] < Q5[i])] = Q5[i]
+    if (PushHigh) 
+     DataSc2[i, which(DataSc2[i, ] > Q95[i])] = Q95[i]
+	    }
+	 DataSc2
 }
 
 
@@ -39,7 +39,7 @@ if(FileType=="csv"){
 if(FileType!="csv"){
 	cat("\n Read in tab delimited file \n")
 	prefix=strsplit(File,split=paste0("\\.",FileType))[[1]][1]
-	In=read.table(File,stringsAsFactors=F, sep="\t",header=T,row.names=1)
+	In=read.table(File,stringsAsFactors=F, sep="\t",header=T,row.names=1,quote="\"")
 }
 
 
